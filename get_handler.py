@@ -11,10 +11,7 @@ logging.basicConfig(filename='/tmp/zr6_flask.log', level=logging.INFO)
 
 
 def content_return(ret):
-    if ret:
-        return {}, 200, {'Content-Type': 'text/json; charset=utf-8'}
-    else:
-        return zr6Lib.get_current_zone(), 500, {'Content-Type': 'text; charset=utf-8'}
+    return ret, 200, {'Content-Type': 'text/json; charset=utf-8'}
 
 
 @app.route("/zr6/zones/on", methods=['GET'])
