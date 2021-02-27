@@ -17,14 +17,12 @@ ZONE_09 = "09"
 ZONE_10 = "10"
 ZONE_11 = "11"
 ZONE_12 = "12"
-
 ZONE_SET_ACTIVE = "znc,4,{zone}\r"
 ZONE_SPECIFIC_COMMAND = "zsc,{zone},{command}\r"
 ZONE_SPECIFIC_COMMAND_RETURN = "rsrc,{zone},{command},OK"
 REQUEST_RESPONSE_SET_ACTIVE = "rznc,4,{zone}\r"
 REQUEST_GLOBAL_COMMAND = "znt,{command},h\r"
 REQUEST_GLOBAL_COMMAND_RETURN = "rznt,{command},OK"
-
 REQUEST_STATUS = "znc,5\r"
 #
 #   Command: znc,5,[cr] (request status information for the active zone)
@@ -125,12 +123,12 @@ def set_whole_home_off():
         return False
 
 # def main():
-# set_current_zone(ZONE_05)
-# print(get_current_zone())
-# set_zone_on(zr6.ZONE_05)
-# print(get_current_zone())
-# set_zone_off(zr6.ZONE_05)
-# print(get_current_zone())
+#   set_current_zone(ZONE_05)
+#   print(get_current_zone())
+#   set_zone_on(ZONE_05)
+#   print(get_current_zone())
+#   set_zone_off(ZONE_05)
+#   print(get_current_zone())
 # set_whole_home_on()
 # set_whole_home_off()
 
