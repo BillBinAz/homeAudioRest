@@ -50,6 +50,8 @@ COMMAND_OFF = "10"
 COMMAND_PLAY = "17"
 COMMAND_STOP = "18"
 COMMAND_ON = "49"  # Power
+SUCCESS = "{ 'response' : 'SUCCESS' }"
+FAILED = "{ 'response' : 'UNKNOWN FAILURE' }"
 
 
 def send_command(command):
@@ -70,15 +72,11 @@ def send_command(command):
         print(e)
     finally:
         s.close()
-    return ""
+    return FAILED
 
 
 def set_current_zone(zone_in):
-    response = send_command(ZONE_SET_ACTIVE.format(zone=zone_in))
-    if response == REQUEST_RESPONSE_SET_ACTIVE.format(zone=zone_in):
-        return True
-    else:
-        return False
+    return send_command(ZONE_SET_ACTIVE.format(zone=zone_in))
 
 
 def get_current_zone():
@@ -87,12 +85,7 @@ def get_current_zone():
 
 def send_zone_command(zone_in, command_in):
     message = ZONE_SPECIFIC_COMMAND.format(zone=zone_in, command=command_in)
-    response = send_command(message)
-
-    if response == ZONE_SPECIFIC_COMMAND_RETURN.format(zone=zone_in, command=command_in):
-        return True
-    else:
-        return False
+    return send_command(message)
 
 
 def set_zone_on(zone_in):
@@ -105,29 +98,19 @@ def set_zone_off(zone_in):
 
 def set_whole_home_on():
     message = REQUEST_GLOBAL_COMMAND.format(command=COMMAND_SOURCE_SELECT_2)
-    response = send_command(message)
-
-    if response == REQUEST_GLOBAL_COMMAND.format(command=COMMAND_SOURCE_SELECT_2):
-        return True
-    else:
-        return False
+    return send_command(message)
 
 
 def set_whole_home_off():
     message = REQUEST_GLOBAL_COMMAND.format(command=COMMAND_OFF)
-    response = send_command(message)
-
-    if response == REQUEST_GLOBAL_COMMAND.format(command=COMMAND_OFF):
-        return True
-    else:
-        return False
+    return send_command(message)
 
 
 def debug():
-    set_zone_on(ZONE_05)
-    set_current_zone(ZONE_05)
+    print(set_zone_on(ZONE_05))
+    print(set_current_zone(ZONE_05))
     print(get_current_zone())
-    set_zone_off(ZONE_05)
+    print(set_zone_off(ZONE_05))
     print(get_current_zone())
     #   set_zone_on(ZONE_05)
     #   print(get_current_zone())
@@ -137,7 +120,7 @@ def debug():
     # set_whole_home_off()
 
 # def main():
-# debug()
+#    debug()
 
 
 # main()
