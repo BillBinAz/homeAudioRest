@@ -9,9 +9,11 @@ sys.path.append('/home/admin/.local/usr/bin')
 app = Flask(__name__)
 logging.basicConfig(filename='/tmp/zr6_flask.log', level=logging.INFO)
 
-
 def content_return(ret):
-    return ret, 200, {'Content-Type': 'text/json; charset=utf-8'}
+    if (ret.find("OK")):
+        return "{}", 200, {'Content-Type': 'text/json; charset=utf-8'}
+    else:
+        return ret, 500, {'Content-Type': 'text/json; charset=utf-8'}
 
 
 @app.route("/zr6/zones/on", methods=['GET'])
