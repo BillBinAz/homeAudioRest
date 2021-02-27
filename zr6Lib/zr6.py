@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 ZR6_IP = "192.168.2.151"
 ZR6_PORT = 4999
 ZONE_01 = "01"
