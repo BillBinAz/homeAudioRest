@@ -137,9 +137,9 @@ def zone_11_off():
     return content_return(zr6Lib.set_zone_off(zr6Lib.ZONE_11))
 
 
-@app.route("/zr6/zones/11/on", methods=['GET'])
-def zone_11_on():
-    return content_return(zr6Lib.set_zone_on(zr6Lib.ZONE_11))
+@app.route("/zr6/zones/12/on", methods=['GET'])
+def zone_12_on():
+    return content_return(zr6Lib.set_zone_on(zr6Lib.ZONE_12))
 
 
 @app.route("/zr6/zones/12/off", methods=['GET'])
