@@ -7,8 +7,8 @@
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../zr6CommandLib">
-      <sourceFolder url="file://$MODULE_DIR$/../zr6CommandLib/src" isTestSource="false" />
+    <content url="file://$MODULE_DIR$/../audioCommandLib">
+      <sourceFolder url="file://$MODULE_DIR$/../audioCommandLib/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
