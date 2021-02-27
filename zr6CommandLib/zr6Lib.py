@@ -122,9 +122,12 @@ def set_whole_home_off():
     else:
         return False
 
-# def main():
-#   set_current_zone(ZONE_05)
-#   print(get_current_zone())
+
+def main():
+    #   set_current_zone(ZONE_05)
+    print(get_current_zone())
+
+
 #   set_zone_on(ZONE_05)
 #   print(get_current_zone())
 #   set_zone_off(ZONE_05)
@@ -133,4 +136,4 @@ def set_whole_home_off():
 # set_whole_home_off()
 
 
-# main()
+main()
