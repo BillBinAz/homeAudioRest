@@ -68,7 +68,7 @@ def zone_4_off():
 
 
 @app.route("/zr6/zones/5/on", methods=['GET'])
-def zone_4_on():
+def zone_5_on():
     return content_return(zr6Lib.set_zone_on(zr6Lib.ZONE_05))
 
 
