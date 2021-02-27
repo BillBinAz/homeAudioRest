@@ -84,7 +84,7 @@ def set_current_zone(zone_in):
 
 
 def get_current_zone():
-    return send_command(zr6Constants.REQUEST_STATUS)
+    return send_command(REQUEST_STATUS)
 
 
 def send_zone_command(zone_in, command_in):
@@ -124,16 +124,15 @@ def set_whole_home_off():
     else:
         return False
 
+# def main():
+# set_current_zone(ZONE_05)
+# print(get_current_zone())
+# set_zone_on(zr6.ZONE_05)
+# print(get_current_zone())
+# set_zone_off(zr6.ZONE_05)
+# print(get_current_zone())
+# set_whole_home_on()
+# set_whole_home_off()
 
-def main():
-    set_current_zone(ZONE_05)
-    print(get_current_zone())
-    # set_zone_on(zr6.ZONE_05)
-    # print(get_current_zone())
-    # set_zone_off(zr6.ZONE_05)
-    # print(get_current_zone())
-    # set_whole_home_on()
-    # set_whole_home_off()
 
-
-main()
+# main()
