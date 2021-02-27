@@ -4,7 +4,7 @@ After=multi-user.target
 
 [Service]
 Type=idle
-ExecStart=/home/admin/nilesZR6Rest/launch_rest.sh
+ExecStart=/home/admin/homeAudioRest/launch_rest.sh
 
 [Install]
 WantedBy=multi-user.target
