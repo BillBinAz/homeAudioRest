@@ -136,9 +136,8 @@ def debug():
     # set_whole_home_on()
     # set_whole_home_off()
 
+# def main():
+# debug()
 
-def main():
-    debug()
 
-
-main()
+# main()
