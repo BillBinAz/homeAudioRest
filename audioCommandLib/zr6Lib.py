@@ -3,8 +3,9 @@
 import socket
 
 BUFFER_SIZE = 1024
-ZR6_IP = "192.168.2.151"
-ZR6_PORT = 4999
+GLOBAL_CACHE_IP = "192.168.2.151"
+SERIAL_PORT = 4999
+
 ZONE_01 = "01"
 ZONE_02 = "02"
 ZONE_03 = "03"
@@ -50,8 +51,7 @@ COMMAND_OFF = "10"
 COMMAND_PLAY = "17"
 COMMAND_STOP = "18"
 COMMAND_ON = "49"  # Power
-SUCCESS = "{ 'response' : 'SUCCESS' }"
-FAILED = "{ 'response' : 'UNKNOWN FAILURE' }"
+FAILED = "UNKNOWN FAILURE"
 
 
 def send_command(command):
@@ -59,7 +59,7 @@ def send_command(command):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     try:
-        s.connect((ZR6_IP, ZR6_PORT))
+        s.connect((GLOBAL_CACHE_IP, SERIAL_PORT))
 
         # Send data
         s.send(command.encode())
@@ -96,12 +96,12 @@ def set_zone_off(zone_in):
     return send_zone_command(zone_in, COMMAND_OFF)
 
 
-def set_whole_home_on():
+def set_all_zones_on():
     message = REQUEST_GLOBAL_COMMAND.format(command=COMMAND_SOURCE_SELECT_2)
     return send_command(message)
 
 
-def set_whole_home_off():
+def set_all_zones_off():
     message = REQUEST_GLOBAL_COMMAND.format(command=COMMAND_OFF)
     return send_command(message)
 
