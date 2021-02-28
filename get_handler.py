@@ -2,7 +2,7 @@ import logging
 import sys
 from flask import Flask
 
-from audioCommandLib import zr6Lib, monoLib
+from audioCommandLib import zr6Lib, monoLib, denonLib
 
 sys.path.append('/home/admin/.local/usr/bin')
 
@@ -162,3 +162,18 @@ def zone_12_on():
 @app.route("/house/zones/12/off", methods=['GET'])
 def zone_12_off():
     return content_return_zr6(zr6Lib.set_zone_off(zr6Lib.ZONE_12))
+
+
+@app.route("/house/denon/off", methods=['GET'])
+def denon_on():
+    return content_return_mono(denonLib.power_off())
+
+
+@app.route("/house/denon/roku", methods=['GET'])
+def denon_on():
+    return content_return_mono(denonLib.select_roku())
+
+
+@app.route("/house/denon/sonos", methods=['GET'])
+def denon_on():
+    return content_return_mono(denonLib.select_sonos())

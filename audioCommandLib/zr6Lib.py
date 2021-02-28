@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 
-import socket
+from audioCommandLib import socketLib
 
-BUFFER_SIZE = 1024
 GLOBAL_CACHE_IP = "192.168.2.151"
 SERIAL_PORT = 4999
 
@@ -55,24 +54,7 @@ FAILED = "UNKNOWN FAILURE"
 
 
 def send_command(command):
-    # Create a TCP/IP socket
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-    try:
-        s.connect((GLOBAL_CACHE_IP, SERIAL_PORT))
-
-        # Send data
-        s.send(command.encode())
-
-        # receive data
-        data = s.recv(BUFFER_SIZE).decode()
-        s.close()
-        return data
-    except Exception as e:
-        print(e)
-    finally:
-        s.close()
-    return FAILED
+    return socketLib.send_command(command, GLOBAL_CACHE_IP, SERIAL_PORT)
 
 
 def set_current_zone(zone_in):
