@@ -17,6 +17,13 @@ def content_return_mono(ret):
         return ret, 500, {'Content-Type': 'text/json; charset=utf-8'}
 
 
+def content_return_denon(ret):
+    if ret.find("200"):
+        return "{}", 200, {'Content-Type': 'text/json; charset=utf-8'}
+    else:
+        return ret, 500, {'Content-Type': 'text/json; charset=utf-8'}
+
+
 def content_return_zr6(ret):
     if ret.find("OK"):
         return "{}", 200, {'Content-Type': 'text/json; charset=utf-8'}
@@ -166,14 +173,14 @@ def zone_12_off():
 
 @app.route("/house/denon/off", methods=['GET'])
 def denon_on():
-    return content_return_mono(denonLib.power_off())
+    return content_return_denon(denonLib.power_off())
 
 
 @app.route("/house/denon/roku", methods=['GET'])
 def denon_roku():
-    return content_return_mono(denonLib.select_roku())
+    return content_return_denon(denonLib.select_roku())
 
 
 @app.route("/house/denon/sonos", methods=['GET'])
 def denon_sonos():
-    return content_return_mono(denonLib.select_sonos())
+    return content_return_denon(denonLib.select_sonos())

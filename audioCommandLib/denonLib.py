@@ -54,13 +54,13 @@ def select_roku():
 def debug():
 
     # standby
-    print(power_off())
+    # print(power_off())
 
     # Power on
-    print(power_on())
+    # print(power_on())
 
     # select CD
-    print(select_sonos())
+    # print(select_sonos())
 
     # select CBL
     print(select_roku())
@@ -70,4 +70,4 @@ def main():
     debug()
 
 
-# main()
+main()
