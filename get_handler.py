@@ -170,10 +170,10 @@ def denon_on():
 
 
 @app.route("/house/denon/roku", methods=['GET'])
-def denon_on():
+def denon_roku():
     return content_return_mono(denonLib.select_roku())
 
 
 @app.route("/house/denon/sonos", methods=['GET'])
-def denon_on():
+def denon_sonos():
     return content_return_mono(denonLib.select_sonos())
