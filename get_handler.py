@@ -18,10 +18,10 @@ def content_return_mono(ret):
 
 
 def content_return_denon(ret):
-    if ret.find("200"):
+    if ret == 200:
         return "{}", 200, {'Content-Type': 'text/json; charset=utf-8'}
     else:
-        return ret, 500, {'Content-Type': 'text/json; charset=utf-8'}
+        return str(ret), 500, {'Content-Type': 'text/json; charset=utf-8'}
 
 
 def content_return_zr6(ret):
