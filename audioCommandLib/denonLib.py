@@ -28,7 +28,7 @@ def send_command(host_in, command_in):
         ret.close()
         if ret.status_code != 200:
             print("Bad response from Denon. " + str(ret.status_code))
-        return ret
+        return ret.status_code
     except Exception as e:
         return str(e)
 
@@ -43,31 +43,41 @@ def power_off():
 
 def select_sonos():
     ret = send_command(DENON_IP, COMMAND_POWER_ON)
-    return ret + send_command(DENON_IP, COMMAND_SELECT_INPUT_CD)
+    if ret == 200:
+        return send_command(DENON_IP, COMMAND_SELECT_INPUT_CD)
+    else:
+        return ret
 
 
 def select_roku():
     ret = send_command(DENON_IP, COMMAND_POWER_ON)
-    return ret + send_command(DENON_IP, COMMAND_SELECT_INPUT_SAT_CBL)
+    if ret == 200:
+        return send_command(DENON_IP, COMMAND_SELECT_INPUT_SAT_CBL)
+    else:
+        return ret
 
 
 def debug():
 
-    # standby
-    # print(power_off())
+    try:
+        # standby
+        # print(power_off())
 
-    # Power on
-    # print(power_on())
+        # Power on
+        # print(power_on())
 
-    # select CD
-    # print(select_sonos())
+        # select CD
+        # print(select_sonos())
 
-    # select CBL
-    print(select_roku())
+        # select CBL
+        print(select_roku())
+        return "done"
+    except Exception as e:
+        return str(e)
 
 
 def main():
-    debug()
+    print(debug())
 
 
 # main()
