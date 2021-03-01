@@ -89,20 +89,22 @@ def set_all_zones_off():
 
 
 def debug():
-    print(set_zone_on(ZONE_05))
     print(set_current_zone(ZONE_05))
+    print(get_current_zone())
+    print(set_zone_on(ZONE_05))
     print(get_current_zone())
     print(set_zone_off(ZONE_05))
     print(get_current_zone())
-    #   set_zone_on(ZONE_05)
-    #   print(get_current_zone())
-    #   set_zone_off(ZONE_05)
-    #   print(get_current_zone())
+    # set_zone_on(ZONE_05)
+    # print(get_current_zone())
+    # set_zone_off(ZONE_05)
+    # print(get_current_zone())
     # set_whole_home_on()
     # set_whole_home_off()
 
-# def main():
-#    debug()
+
+def main():
+    debug()
 
 
 # main()

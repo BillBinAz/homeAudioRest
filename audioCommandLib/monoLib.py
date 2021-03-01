@@ -27,8 +27,9 @@ def debug():
     print(set_all_zones_on())
     print(set_all_zones_off())
 
-# def main():
-#    debug()
+
+def main():
+    debug()
 
 
 # main()
