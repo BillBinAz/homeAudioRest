@@ -41,6 +41,10 @@ def backyard_zones_all_off():
     return content_return_mono(monoLib.set_all_zones_off())
 
 
+# @app.route("/backyard/zones/<zone>/<command>", methods=['GET'])
+# def house_zones_command(zone, command):
+
+
 @app.route("/house/zones/on", methods=['GET'])
 def house_zones_all_on():
     return content_return_zr6(zr6Lib.set_all_zones_on())
@@ -51,124 +55,50 @@ def house_zones_all_off():
     return content_return_zr6(zr6Lib.set_all_zones_off())
 
 
-@app.route("/house/zones/1/on", methods=['GET'])
-def zone_1_on():
-    return content_return_zr6(zr6Lib.set_zone_on(zr6Lib.ZONE_01))
+@app.route("/house/zones/<zone>/<command>", methods=['GET'])
+def house_zones_command(zone, command):
+    zone_in = map_zones(zone)
+    if command == "on":
+        return content_return_zr6(zr6Lib.set_zone_on(zone_in))
+    if command == "off":
+        return content_return_zr6(zr6Lib.set_zone_off(zone_in))
+
+    command_in = map_command(command)
+    return content_return_zr6(zr6Lib.send_zone_command(zone_in, command_in))
 
 
-@app.route("/house/zones/1/off", methods=['GET'])
-def zone_1_off():
-    return content_return_zr6(zr6Lib.set_zone_off(zr6Lib.ZONE_01))
+def map_command(command_in):
+    if command_in == "up":
+        return zr6Lib.COMMAND_VOLUME_UP
+    if command_in == "down":
+        return zr6Lib.COMMAND_VOLUME_DOWN
 
 
-@app.route("/house/zones/2/on", methods=['GET'])
-def zone_2_on():
-    return content_return_zr6(zr6Lib.set_zone_on(zr6Lib.ZONE_02))
-
-
-@app.route("/house/zones/2/off", methods=['GET'])
-def zone_2_off():
-    return content_return_zr6(zr6Lib.set_zone_off(zr6Lib.ZONE_02))
-
-
-@app.route("/house/zones/3/on", methods=['GET'])
-def zone_3_on():
-    return content_return_zr6(zr6Lib.set_zone_on(zr6Lib.ZONE_03))
-
-
-@app.route("/house/zones/3/off", methods=['GET'])
-def zone_3_off():
-    return content_return_zr6(zr6Lib.set_zone_off(zr6Lib.ZONE_03))
-
-
-@app.route("/house/zones/4/on", methods=['GET'])
-def zone_4_on():
-    return content_return_zr6(zr6Lib.set_zone_on(zr6Lib.ZONE_04))
-
-
-@app.route("/house/zones/4/off", methods=['GET'])
-def zone_4_off():
-    return content_return_zr6(zr6Lib.set_zone_off(zr6Lib.ZONE_04))
-
-
-@app.route("/house/zones/5/on", methods=['GET'])
-def zone_5_on():
-    return content_return_zr6(zr6Lib.set_zone_on(zr6Lib.ZONE_05))
-
-
-@app.route("/house/zones/5/off", methods=['GET'])
-def zone_5_off():
-    return content_return_zr6(zr6Lib.set_zone_off(zr6Lib.ZONE_05))
-
-
-@app.route("/house/zones/6/on", methods=['GET'])
-def zone_6_on():
-    return content_return_zr6(zr6Lib.set_zone_on(zr6Lib.ZONE_06))
-
-
-@app.route("/house/zones/6/off", methods=['GET'])
-def zone_6_off():
-    return content_return_zr6(zr6Lib.set_zone_off(zr6Lib.ZONE_06))
-
-
-@app.route("/house/zones/7/on", methods=['GET'])
-def zone_7_on():
-    return content_return_zr6(zr6Lib.set_zone_on(zr6Lib.ZONE_07))
-
-
-@app.route("/house/zones/7/off", methods=['GET'])
-def zone_7_off():
-    return content_return_zr6(zr6Lib.set_zone_off(zr6Lib.ZONE_07))
-
-
-@app.route("/house/zones/8/on", methods=['GET'])
-def zone_8_on():
-    return content_return_zr6(zr6Lib.set_zone_on(zr6Lib.ZONE_08))
-
-
-@app.route("/house/zones/8/off", methods=['GET'])
-def zone_8_off():
-    return content_return_zr6(zr6Lib.set_zone_off(zr6Lib.ZONE_08))
-
-
-@app.route("/house/zones/9/on", methods=['GET'])
-def zone_9_on():
-    return content_return_zr6(zr6Lib.set_zone_on(zr6Lib.ZONE_09))
-
-
-@app.route("/house/zones/9/off", methods=['GET'])
-def zone_9_off():
-    return content_return_zr6(zr6Lib.set_zone_off(zr6Lib.ZONE_09))
-
-
-@app.route("/house/zones/10/on", methods=['GET'])
-def zone_10_on():
-    return content_return_zr6(zr6Lib.set_zone_on(zr6Lib.ZONE_10))
-
-
-@app.route("/house/zones/10/off", methods=['GET'])
-def zone_10_off():
-    return content_return_zr6(zr6Lib.set_zone_off(zr6Lib.ZONE_10))
-
-
-@app.route("/house/zones/11/on", methods=['GET'])
-def zone_11_on():
-    return content_return_zr6(zr6Lib.set_zone_on(zr6Lib.ZONE_11))
-
-
-@app.route("/house/zones/11/off", methods=['GET'])
-def zone_11_off():
-    return content_return_zr6(zr6Lib.set_zone_off(zr6Lib.ZONE_11))
-
-
-@app.route("/house/zones/12/on", methods=['GET'])
-def zone_12_on():
-    return content_return_zr6(zr6Lib.set_zone_on(zr6Lib.ZONE_12))
-
-
-@app.route("/house/zones/12/off", methods=['GET'])
-def zone_12_off():
-    return content_return_zr6(zr6Lib.set_zone_off(zr6Lib.ZONE_12))
+def map_zones(zone_in):
+    if zone_in == "1":
+        return zr6Lib.ZONE_01
+    if zone_in == "2":
+        return zr6Lib.ZONE_02
+    if zone_in == "3":
+        return zr6Lib.ZONE_03
+    if zone_in == "4":
+        return zr6Lib.ZONE_04
+    if zone_in == "5":
+        return zr6Lib.ZONE_05
+    if zone_in == "6":
+        return zr6Lib.ZONE_06
+    if zone_in == "7":
+        return zr6Lib.ZONE_07
+    if zone_in == "8":
+        return zr6Lib.ZONE_08
+    if zone_in == "9":
+        return zr6Lib.ZONE_09
+    if zone_in == "10":
+        return zr6Lib.ZONE_10
+    if zone_in == "11":
+        return zr6Lib.ZONE_11
+    if zone_in == "12":
+        return zr6Lib.ZONE_12
 
 
 @app.route("/house/denon/off", methods=['GET'])

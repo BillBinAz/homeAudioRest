@@ -88,6 +88,16 @@ def set_all_zones_off():
     return send_command(message)
 
 
+def zone_volume_up(zone_in):
+    set_current_zone(zone_in)
+    return send_zone_command(zone_in, COMMAND_VOLUME_UP)
+
+
+def zone_volume_down(zone_in):
+    set_current_zone(zone_in)
+    return send_zone_command(zone_in, COMMAND_VOLUME_DOWN)
+
+
 def debug():
     print(set_current_zone(ZONE_05))
     print(get_current_zone())
